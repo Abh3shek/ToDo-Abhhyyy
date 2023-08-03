@@ -1,0 +1,37 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.sign-up{
+    margin: 5% 30%;
+    margin-bottom: 5%;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sign-up button{
+    margin-bottom: 2%;
+    width: 10%;
+}
+
+
+h3{
+    text-align: center;
+}
+
+.alert{
+    text-align: center;
+    margin: auto 40%;
+    width: 20%;
+}
+
+.table{
+    margin: 1% 5%;
+    width: 89vw;
+    text-align: center;
+}

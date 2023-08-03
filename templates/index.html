@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home |
+{% endblock title %}
+{% block body %}
+    <form class="sign-up" action="/" method="POST">
+      <div class="mb-3">
+        <label for="taskTitle" class="form-label">Add a title</label>
+        <input type="text" name="title" placeholder="Type here...." class="form-control" id="taskTitle">
+      </div>
+      <div class="mb-3">
+        <label for="taskDesc" class="form-label">Add a Description</label>
+        <input type="text" name="desc" placeholder="Descript in brief..." class="form-control" id="taskDesc">
+      </div>
+      <div class="btns">
+        <button type="submit" class="btn btn-dark">Add</button>
+        <button type="submit" id="resetList" name="resetList" class="btn btn-dark">Empty</button>
+      </div>
+    </form>
+
+    <h3>Your ToDo's</h3>
+    {% if showAllRec|length == 0 %}
+    <div class="alert alert-dark" role="alert">
+      No tasks to display
+    </div>
+    {% else %}
+      
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Sr. No.</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Creation Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in showAllRec %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{task.title}}</td>
+          <td>{{task.desc}}</td>
+          <td>{{task.issueDate}}</td>
+          <td>
+            <a href="/update/{{task.sr_no}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+            <a href="/delete/{{task.sr_no}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+{% endblock body %}
